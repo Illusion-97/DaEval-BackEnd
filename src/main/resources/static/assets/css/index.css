@@ -1,0 +1,77 @@
+.tabRow
+{
+    text-transform: none;
+}
+
+.httpMethod, .paramType {
+    display: inline-block;
+}
+
+.httpMethod {
+    border-radius: 25px;
+    padding-right: 1em !important;
+    padding-left : 1em !important;
+    background-color: grey;
+    margin-right: 3em;
+}
+
+.paramType {
+    margin: 0;
+}
+
+.tabHead, .tabRow:not(:last-child) {
+    border-bottom: rgba(210, 215, 217, 0.75) 1px solid;
+}
+
+.tabRow p
+{
+    padding: 0.75em 0;
+}
+
+.border {
+    border-left: rgba(210, 215, 217, 0.75) 1px solid;
+    border-right: rgba(210, 215, 217, 0.75) 1px solid;
+}
+
+.GET {
+    color: lawngreen;
+}
+
+.POST {
+    color: yellow;
+}
+
+.PUT {
+    color: cornflowerblue;
+}
+
+.DELETE {
+    color: coral;
+}
+
+.Object {
+    color : blue;
+}
+
+.int, .long, .boolean, .double, .String, .Integer, .Long, .Boolean, .Double
+{
+    color : orange;
+}
+
+.colorParamBox
+{
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin: 0 1em;
+}
+
+.Json
+{
+    background-color: blue;
+}
+
+.Query
+{
+    background-color: orange;
+}
