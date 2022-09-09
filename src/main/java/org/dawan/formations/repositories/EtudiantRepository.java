@@ -27,7 +27,7 @@ public interface EtudiantRepository extends JpaRepository<Etudiant, Long> {
     void setStatut(Long id, STATUT_UTILISATEUR statut);
 
 
-    @Query("FROM Etudiant e " +
+    @Query("SELECT DISTINCT e FROM Etudiant e " +
             "JOIN e.utilisateur u " +
             "JOIN e.promotions p " +
             "JOIN p.ville v WHERE " +

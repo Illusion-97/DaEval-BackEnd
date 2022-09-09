@@ -2,6 +2,7 @@ package org.dawan.formations.services.impl;
 
 import org.dawan.formations.dtos.*;
 import org.dawan.formations.models.Etudiant;
+import org.dawan.formations.models.Niveau;
 import org.dawan.formations.models.STATUT_UTILISATEUR;
 import org.dawan.formations.models.Utilisateur;
 import org.dawan.formations.repositories.UtilisateurRepository;
@@ -14,8 +15,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class UtilisateurServiceImpl extends GenericServiceImpl<Utilisateur, UtilisateurDto, UtilisateurRepository> implements UtilisateurService {
@@ -79,6 +82,10 @@ public class UtilisateurServiceImpl extends GenericServiceImpl<Utilisateur, Util
         } else {
             throw new Exception("Invalid credential");
         }
+    }
+
+    public List<EnumDto> GETStatut() {
+        return Arrays.stream(STATUT_UTILISATEUR.values()).map(statut -> new EnumDto(statut, statut.name())).collect(Collectors.toList());
     }
 
     @Override

@@ -1,4 +1,4 @@
-package org.dawan.formations.controllers;
+package org.dawan.formations.controllers.neutralized;
 
 import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
 import freemarker.template.Configuration;

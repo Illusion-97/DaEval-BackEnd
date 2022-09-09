@@ -30,6 +30,7 @@ public class WrapperTool {
         PRIMITIVES_TO_WRAPPERS.put(void.class, Void.class);
     }
 
+    // Casting string values to needed primitives ulterior implicit casting
     public static Object getWrappedObject(Class<?> type,String object) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Class<?> wrapper = wrap(type);
         Method parser = wrapper.getMethod("valueOf",String.class);

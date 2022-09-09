@@ -1,4 +1,4 @@
-package org.dawan.formations.controllers;
+package org.dawan.formations.controllers.neutralized;
 
 import io.micrometer.core.lang.Nullable;
 import org.dawan.formations.dtos.EtudiantDto;

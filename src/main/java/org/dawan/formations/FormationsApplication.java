@@ -1,5 +1,7 @@
 package org.dawan.formations;
 
+import org.dawan.formations.interceptors.TokenInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -14,6 +16,10 @@ public class FormationsApplication {
     public static void main(String[] args) {
         SpringApplication.run(FormationsApplication.class, args);
     }
+
+
+    @Autowired
+    private TokenInterceptor tokenInterceptor;
 
     @Bean
     public WebMvcConfigurer myMvcConfigurer() {

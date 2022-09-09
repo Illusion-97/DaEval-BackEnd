@@ -1,6 +1,6 @@
 package org.dawan.formations.services.impl;
 
-import org.dawan.formations.dtos.NiveauDto;
+import org.dawan.formations.dtos.EnumDto;
 import org.dawan.formations.dtos.PositionDto;
 import org.dawan.formations.models.Niveau;
 import org.dawan.formations.models.Positionnement;
@@ -53,8 +53,8 @@ public class PositionServiceImpl extends GenericServiceImpl<Positionnement, Posi
                         ).collect(Collectors.toList()))));
     }
 
-    public List<NiveauDto> GETNiveaux() {
-        return Arrays.stream(Niveau.values()).map(niveau -> new NiveauDto(niveau, niveau.name())).collect(Collectors.toList());
+    public List<EnumDto> GETNiveaux() {
+        return Arrays.stream(Niveau.values()).map(niveau -> new EnumDto(niveau, niveau.name())).collect(Collectors.toList());
     }
 
     public List<PositionDto> getForGrille(long uId, long pId){

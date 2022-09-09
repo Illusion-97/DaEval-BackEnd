@@ -40,8 +40,10 @@ public class MonoController {
             return getResponse(HttpStatus.BAD_REQUEST,"Service Not Found");
         } catch (NoSuchMethodException nsme) {
             return getResponse(HttpStatus.BAD_REQUEST,"Method Not Found");
-        } catch (InvocationTargetException | IllegalAccessException | IllegalArgumentException e) {
-            return getResponse(HttpStatus.BAD_REQUEST,e.getMessage());
+        } catch (InvocationTargetException ite) {
+            return getResponse(HttpStatus.BAD_REQUEST, ite.getTargetException().getMessage());
+        } catch (IllegalAccessException | IllegalArgumentException e) {
+            return getResponse(HttpStatus.BAD_REQUEST,"Can't Acess");
         }
     }
 

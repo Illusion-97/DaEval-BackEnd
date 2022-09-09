@@ -12,4 +12,12 @@ public class TokenSaver {
         tokensByEmail = new HashMap<>();
 
     }
+
+    public static Map<String, String> getTokensByEmail() {
+        return tokensByEmail;
+    }
+
+    public static void setTokensByEmail(Map<String, String> tokensByEmail) {
+        TokenSaver.tokensByEmail = tokensByEmail;
+    }
 }

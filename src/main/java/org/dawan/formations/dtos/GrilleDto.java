@@ -1,4 +1,4 @@
-package org.dawan.formations.dtos.index;
+package org.dawan.formations.dtos;
 
 import org.dawan.formations.dtos.*;
 

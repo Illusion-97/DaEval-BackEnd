@@ -9,6 +9,9 @@ public class SimpleUtilisateurDto {
     private STATUT_UTILISATEUR statut;
     private String email;
 
+    public SimpleUtilisateurDto() {
+    }
+
     public SimpleUtilisateurDto(long id, String nom, String prenom, STATUT_UTILISATEUR statut, String email) {
         this.id = id;
         this.nom = nom;

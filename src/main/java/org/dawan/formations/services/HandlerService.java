@@ -37,13 +37,12 @@ public class HandlerService {
                     String dtoName = "No Dto";
                     String dtoStructure = "No DtoStructure";
                     try {
-
                         GenericService<?,?,?> genericService = (GenericService<?,?,?>)service;
                         dtoName = genericService.getDtoName();
                         dtoStructure = genericService.getDtoStructure();
-                    } catch (Exception ignored) {
+                    } catch (Exception ignored) { // ignore problematic service
                     }
-                    return new ServiceDto(n.replace(SERVICE_SUFFIX, ""),
+                    return new ServiceDto(n.replace(SERVICE_SUFFIX, ""), // Give right service name for ulterior calls
                         ReflecTool.test(service.getClass(), new ArrayList<>()), dtoName, dtoStructure);
                 }).collect(Collectors.toList());
         List<JsonStructureDto> structure = services.stream()
@@ -56,8 +55,7 @@ public class HandlerService {
                 .collect(Collectors.toList());
         try {
             return FreeMarkerTool.getResult(this.getClass(),"Index.ftl",new IndexDto(context.getId(), services, structure));
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             return "Somthing Went Wrong";
         }
     }
@@ -69,7 +67,8 @@ public class HandlerService {
             String serviceName = pathArgs.get("service") + SERVICE_SUFFIX;
             Object service = context.getBean(serviceName);
             Method method = Arrays.stream(service.getClass().getMethods())
-                    .filter(m -> m.getName().contentEquals( httpMethod + pathArgs.get("method")))
+                    .filter(m -> m.getName().contentEquals( httpMethod + pathArgs.get("method")) &&
+                            Arrays.stream(m.getParameterTypes()).noneMatch(type -> type.equals(Object.class))) // Avoid Inherited Generic Method (Cause: Cast Exception)
                     .findFirst().orElseThrow(NoSuchMethodException::new);
             return method.invoke(service,getArgs(method,body,reqArgs));
     }
@@ -80,15 +79,18 @@ public class HandlerService {
             Class<?> type = parameter.getType();
             try
             {
+                //try to cast Body
                 return Objects.requireNonNull(new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false).readValue(body,type));
             }
-            catch (Exception ex)
+            catch (Exception ex) // if can't
             {
                 try
                 {
+                    // try to find and cast RequestParam
                     return WrapperTool.getWrappedObject(type,reqArgs.get(parameter.getName()));
-                } catch (Exception e)
+                } catch (Exception e) // if can't
                 {
+                    // return null for ulterior exception catch
                     return null;
                 }
             }

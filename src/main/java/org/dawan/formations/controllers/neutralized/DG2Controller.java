@@ -1,4 +1,4 @@
-package org.dawan.formations.controllers;
+package org.dawan.formations.controllers.neutralized;
 
 import org.dawan.formations.services.DG2Service;
 import org.springframework.beans.factory.annotation.Autowired;

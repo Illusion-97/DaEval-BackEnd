@@ -3,7 +3,7 @@ package org.dawan.formations.services.impl;
 import com.openhtmltopdf.pdfboxout.PdfRendererBuilder;
 import freemarker.template.TemplateException;
 import org.dawan.formations.dtos.*;
-import org.dawan.formations.dtos.index.GrilleDto;
+import org.dawan.formations.dtos.GrilleDto;
 import org.dawan.formations.services.*;
 import org.dawan.formations.tools.FreeMarkerTool;
 import org.springframework.beans.factory.annotation.Value;

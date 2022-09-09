@@ -1,4 +1,4 @@
-package org.dawan.formations.controllers;
+package org.dawan.formations.controllers.neutralized;
 
 import org.dawan.formations.dtos.PromotionDto;
 import org.dawan.formations.models.Promotion;
